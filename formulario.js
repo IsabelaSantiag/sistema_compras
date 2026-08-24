@@ -4,7 +4,8 @@
 
 // ⚙️  CONFIGURAÇÃO: cole aqui a URL do seu Google Apps Script Web App
 //    (após publicar como Web App — veja /apps-script-code.gs)
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxmErXfRFXw0YfyiKsBJaV1rndmKOVEGYrAJPPv1CicpteO_ZaFmrP6r9C8TL5D8We5/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyP8fa6cj5XL9pBgpc6KWhKmlQbGPY8x8kv4JZNMmG73FICB93CvBdtbPzYNWOHdpB_SQ/exec";
+
 // ============ ESTADO ============
 const state = {
   step: 1,
