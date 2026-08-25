@@ -5,6 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Solicitação de Compras — Sistema Institucional</title>
+ <link rel="icon" type="image/png" href="favicon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -240,7 +242,8 @@
             <span class="err" data-err="i-unidade"></span>
           </div>
           <div class="field hidden" id="wrap-qtd-embalagem">
-            <label class="lbl" for="i-qtd-embalagem">Quantity per box/package / Quantidade por caixa/pacote <span class="req">*</span></label>
+            <label class="lbl" for="i-qtd-embalagem">Quantity per box/package / Quantidade por caixa/pacote <span
+                class="req">*</span></label>
             <input type="number" min="1" step="1" id="i-qtd-embalagem" class="inp"
               placeholder="Ex.: 500 folhas por caixa" data-testid="input-item-qtd-embalagem" />
             <span class="err" data-err="i-qtd-embalagem"></span>
@@ -282,7 +285,8 @@
           <h3>Similar Product / Produto Similar</h3>
         </div>
         <div class="field">
-          <label class="lbl">Do you accept a similar product? / Aceita produto similar? <span class="req">*</span></label>
+          <label class="lbl">Do you accept a similar product? / Aceita produto similar? <span
+              class="req">*</span></label>
           <div class="radio-group" data-testid="group-similar">
             <label class="radio-pill">
               <input type="radio" name="similar" value="Sim" data-testid="radio-similar-sim" />
@@ -321,29 +325,30 @@
         </button>
 
         <div class="section-heading mt-lg">
-  <div class="section-bar"></div>
-  <h3>Attachments / Anexos</h3>
-  <span class="hint">Photo, catalog, print, PDF — up to 10 files, 5MB each / Fotos, catálogo, print, PDF — até 10 arquivos, 5MB cada.</span>
-</div>
+          <div class="section-bar"></div>
+          <h3>Attachments / Anexos</h3>
+          <span class="hint">Photo, catalog, print, PDF — up to 10 files, 5MB each / Fotos, catálogo, print, PDF — até
+            10 arquivos, 5MB cada.</span>
+        </div>
 
-<div class="upload-section">
-  <div class="upload-head">
-    <div>
-      <span class="upload-title">Send files / Enviar arquivos</span>
-      <span class="upload-sub">Imagens (JPG, PNG, WEBP) ou PDF · até 10 arquivos · máx 5 MB cada</span>
-    </div>
-    <label class="btn btn-ghost btn-sm" for="i-arquivos" style="cursor:pointer;">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-        <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
-      </svg>
-      Select files / Selecionar arquivos
-    </label>
-    <input type="file" id="i-arquivos" multiple accept="image/jpeg,image/png,image/webp,application/pdf"
-      style="display:none;" data-testid="input-arquivos" />
-  </div>
-  <div id="lista-arquivos" class="lista-arquivos"></div>
-  <span class="err" data-err="arquivos"></span>
-</div>
+        <div class="upload-section">
+          <div class="upload-head">
+            <div>
+              <span class="upload-title">Send files / Enviar arquivos</span>
+              <span class="upload-sub">Imagens (JPG, PNG, WEBP) ou PDF · até 10 arquivos · máx 5 MB cada</span>
+            </div>
+            <label class="btn btn-ghost btn-sm" for="i-arquivos" style="cursor:pointer;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+              </svg>
+              Select files / Selecionar arquivos
+            </label>
+            <input type="file" id="i-arquivos" multiple accept="image/jpeg,image/png,image/webp,application/pdf"
+              style="display:none;" data-testid="input-arquivos" />
+          </div>
+          <div id="lista-arquivos" class="lista-arquivos"></div>
+          <span class="err" data-err="arquivos"></span>
+        </div>
 
 
         <div class="section-heading mt-lg">
@@ -420,7 +425,8 @@
           </thead>
           <tbody id="tbody-itens">
             <tr class="empty-row">
-              <td colspan="7">No items added. Fill out the form above and click / Nenhum item adicionado. Preencha o formulário acima e clique em <b>Add Item / Adicionar Item</b>.
+              <td colspan="7">No items added. Fill out the form above and click / Nenhum item adicionado. Preencha o
+                formulário acima e clique em <b>Add Item / Adicionar Item</b>.
               </td>
             </tr>
           </tbody>
@@ -455,7 +461,8 @@
         </div>
         <div>
           <h2 class="card-title">Review of the Request / Revisão da Solicitação</h2>
-          <p class="card-sub">Check all the details before submitting. You can go back to previous steps to edit. / Confira todos os dados antes de enviar. Você pode voltar às etapas anteriores para editar.
+          <p class="card-sub">Check all the details before submitting. You can go back to previous steps to edit. /
+            Confira todos os dados antes de enviar. Você pode voltar às etapas anteriores para editar.
           </p>
         </div>
       </div>
@@ -466,7 +473,8 @@
       </div>
 
       <div class="review-block">
-        <h4 class="review-title">Requested Items / Itens Solicitados <span class="counter" id="review-count"></span></h4>
+        <h4 class="review-title">Requested Items / Itens Solicitados <span class="counter" id="review-count"></span>
+        </h4>
         <div id="review-itens" class="review-itens"></div>
       </div>
 
@@ -503,9 +511,11 @@
         </svg>
       </div>
       <h3>Request Submitted / Solicitação Enviada</h3>
-      <p>Your request has been successfully registered in the institutional spreadsheet. / Sua solicitação foi registrada com sucesso na planilha institucional.</p>
+      <p>Your request has been successfully registered in the institutional spreadsheet. / Sua solicitação foi
+        registrada com sucesso na planilha institucional.</p>
       <p class="modal-protocol">Protocol: <b id="modal-protocol"></b></p>
-      <button class="btn btn-primary" id="btn-nova" data-testid="btn-nova-solicitacao">New Request / Nova Solicitação</button>
+      <button class="btn btn-primary" id="btn-nova" data-testid="btn-nova-solicitacao">New Request / Nova
+        Solicitação</button>
     </div>
   </div>
 
