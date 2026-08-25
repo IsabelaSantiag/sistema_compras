@@ -4,7 +4,7 @@
 
 // ⚙️  CONFIGURAÇÃO: cole aqui a URL do seu Google Apps Script Web App
 //    (após publicar como Web App — veja /apps-script-code.gs)
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyP8fa6cj5XL9pBgpc6KWhKmlQbGPY8x8kv4JZNMmG73FICB93CvBdtbPzYNWOHdpB_SQ/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxGxn-ctbqpoidFfcTrlMG8whhk7gBcp4l7W_-9g1BbPgau0LsoTo7XFZZNYjYJm7jxzQ/exec";
 
 // ============ ESTADO ============
 const state = {
@@ -92,6 +92,16 @@ $("#finalidade").addEventListener("change", (e) => {
   $("#wrap-finalidade-outra").classList.toggle("hidden", !outra);
 });
 
+$("#departamento").addEventListener("change", (e) => {
+  const valor = e.target.value;
+  const isAcademico = valor.startsWith("Academic-Primary") || valor.startsWith("Academic-Secondary");
+  $("#campoAcademico").classList.toggle("hidden", !isAcademico);
+  if (!isAcademico) {
+    $("#anoOuArea").value = "";
+  }
+});
+
+
 $("#btn-next-1").addEventListener("click", () => {
   const panel = $("#panel-1");
   clearErrors(panel);
@@ -171,10 +181,6 @@ $("#btn-add-item").addEventListener("click", () => {
     link1: $("#i-link1").value.trim(),
     link2: $("#i-link2").value.trim(),
     linksExtras: [...document.querySelectorAll(".extra-link")].map(i => i.value.trim()).filter(Boolean),
-    anexoFoto: $("#i-anexo-foto").value.trim(),
-    anexoCatalogo: $("#i-anexo-catalogo").value.trim(),
-    anexoPrint: $("#i-anexo-print").value.trim(),
-    anexoPdf: $("#i-anexo-pdf").value.trim(),
     arquivos: [...state.arquivos],
     observacoes: $("#i-obs").value.trim(),
     prioridade: document.querySelector('input[name="prioridade"]:checked')?.value || "",
@@ -190,8 +196,8 @@ $("#btn-add-item").addEventListener("click", () => {
     setError("i-qtd-embalagem", "Informe a quantidade por caixa/pacote."); ok = false;
   }
   if (!item.similar) { setError("similar", "Informe se aceita similar."); ok = false; }
-  if (!validUrl(item.link1)) { setError("i-link1", "Informe uma URL válida."); ok = false; }
-  if (!validUrl(item.link2)) { setError("i-link2", "Informe uma URL válida."); ok = false; }
+  if (item.link1 && !validUrl(item.link1)) { setError("i-link1", "Informe uma URL válida."); ok = false; }
+  if (item.link2 && !validUrl(item.link2)) { setError("i-link2", "Informe uma URL válida."); ok = false; }
   if (!item.prioridade) { setError("prioridade", "Selecione a prioridade."); ok = false; }
   if (item.prioridade === "Alta" && !item.urgencia) { setError("i-urgencia", "Informe o motivo da urgência."); ok = false; }
 
@@ -222,8 +228,7 @@ $("#btn-cancel-edit").addEventListener("click", () => {
 
 function resetItemForm() {
   const ids = ["i-categoria", "i-nome", "i-qtd", "i-unidade", "i-qtd-embalagem", "i-marca", "i-modelo", "i-cor",
-    "i-tamanho", "i-especs", "i-link1", "i-link2", "i-anexo-foto", "i-anexo-catalogo", "i-anexo-print",
-    "i-anexo-pdf", "i-obs", "i-urgencia"];
+    "i-tamanho", "i-especs", "i-link1", "i-link2", "i-obs", "i-urgencia"];
   ids.forEach(id => { const el = document.getElementById(id); if (el) el.value = ""; });
   document.querySelectorAll('input[name="similar"]').forEach(r => r.checked = false);
   document.querySelectorAll('input[name="prioridade"]').forEach(r => r.checked = false);
@@ -238,10 +243,17 @@ function resetItemForm() {
 }
 
 // ============ UPLOAD DE ARQUIVOS ============
+
+const MAX_ARQUIVOS = 10;
+
 $("#i-arquivos").addEventListener("change", async (e) => {
   const files = [...e.target.files];
   e.target.value = ""; // permite selecionar o mesmo arquivo de novo
   for (const f of files) {
+    if (state.arquivos.length >= MAX_ARQUIVOS) {
+      toast('Máximo de ${MAX_ARQUIVOS} arquivos por item.', "error");
+      break;
+    }
     if (!ACCEPTED_MIMES.includes(f.type)) {
       toast(`"${f.name}": tipo não aceito (apenas JPG, PNG, WEBP, PDF).`, "error");
       continue;
