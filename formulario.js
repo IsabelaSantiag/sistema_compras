@@ -100,7 +100,7 @@ $("#departamento").addEventListener("change", (e) => {
     $("#anoOuArea").value = "";
   }
 
-  const isOutro = valor === "Outros";
+  const isOutro = valor === "Other / Outros";
   $("#wrap-departamento-outro").classList.toggle("hidden", !isOutro);
   if (!isOutro) {
     $("#departamento-outro").value = "";
@@ -117,6 +117,8 @@ $("#btn-next-1").addEventListener("click", () => {
     email: $("#email").value.trim(),
     campus: $("#campus").value,
     departamento: $("#departamento").value,
+    departamentoOutro: $("#departamento-outro").value.trim(),
+    anoOuArea: $("#anoOuArea").value.trim(),
     finalidade: $("#finalidade").value,
     finalidadeOutra: $("#finalidade-outra").value.trim(),
   };
@@ -126,11 +128,17 @@ $("#btn-next-1").addEventListener("click", () => {
   if (!validEmail(dados.email)) { setError("email", "Informe um e-mail válido."); ok = false; }
   if (!dados.campus) { setError("campus", "Selecione o campus."); ok = false; }
   if (!dados.departamento) { setError("departamento", "Selecione o departamento."); ok = false; }
-  if (dados.departamento === "Outros" && !dados.departamentoOutro) {
+  if (dados.departamento === "Others / Outros" && !dados.departamentoOutro) {
     setError("departamento-outro", "Especifique o departamento."); ok = false;
   }
+  const isAcademico = dados.departamento.startsWith("Academic-Primary") || dados.departamento.startsWith("Academic-Secondary");
+  if (isAcademico && !dados.anoOuArea) {
+    setError("anoOuArea", "Informe o ano ou área de ensino.");
+    ok = false;
+  }
+
   if (!dados.finalidade) { setError("finalidade", "Selecione a finalidade."); ok = false; }
-  if (dados.finalidade === "Outro" && !dados.finalidadeOutra) {
+  if (dados.finalidade === "Others / Outros" && !dados.finalidadeOutra) {
     setError("finalidade-outra", "Especifique a finalidade."); ok = false;
   }
 

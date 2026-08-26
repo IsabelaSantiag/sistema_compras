@@ -92,6 +92,11 @@ body {
 .meta-label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: rgba(255,255,255,0.65); }
 .meta-value { font-family: var(--ff-mono); font-size: 15px; font-weight: 500; color: var(--teal-400); }
 
+#campoAcademico,
+#wrap-departamento-outro {
+  grid-column: 2;
+}
+
 /* ================== STEPPER ================== */
 .stepper {
   background: white;
