@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Solicitação de Compras — Sistema Institucional</title>
+  <title>Solicitação de Compras — Sistema BCB</title>
  <link rel="icon" type="image/png" href="favicon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -93,13 +93,13 @@
         </div>
         <div class="field">
           <label class="lbl" for="email">Corporate Email <span class="req">*</span></label>
-          <input type="email" id="email" class="inp" placeholder="nome@instituicao.edu.br" data-testid="input-email" />
+          <input type="email" id="email" class="inp" placeholder="name@britishcollege.org" data-testid="input-email" />
           <span class="err" data-err="email"></span>
         </div>
         <div class="field">
           <label class="lbl" for="campus">Campus <span class="req">*</span></label>
           <select id="campus" class="inp" data-testid="select-campus">
-            <option value="">Selecione o campus</option>
+            <option value="">Select Campus / Selecione o campus</option>
             <option>Campus CF</option>
             <option>Campus CJ</option>
             <option>Campus CF & CJ</option>
@@ -156,7 +156,7 @@
         <div class="field grid-span-2 hidden" id="wrap-finalidade-outra">
           <label class="lbl" for="finalidade-outra">Specify the purpose. / Especifique a finalidade <span
               class="req">*</span></label>
-          <input type="text" id="finalidade-outra" class="inp" placeholder="Descreva a finalidade específica"
+          <input type="text" id="finalidade-outra" class="inp" placeholder="Describe the specific purpose. / Descreva a finalidade específica"
             data-testid="input-finalidade-outra" />
           <span class="err" data-err="finalidade-outra"></span>
         </div>
@@ -230,25 +230,26 @@
             <label class="lbl" for="i-unidade">Unit / Unidade <span class="req">*</span></label>
             <select id="i-unidade" class="inp" data-testid="select-item-unidade">
               <option value="">Select the unit / Selecione a unidade</option>
-              <option>Unit / Unidade</option>
-              <option>Box / Caixa</option>
-              <option>Package / Pacote</option>
-              <option>Kg</option>
-              <option>Liters / Litro</option>
-              <option>Meter / Metro</option>
-              <option>Roll / Rolo</option>
-              <option>Reams / Resma</option>
+              <option value="Unidade">Unit / Unidade</option>
+              <option value="Caixa">Box / Caixa</option>
+              <option value="Pacote">Package / Pacote</option>
+              <option value="Kg">Kg</option>
+              <option value="Litros">Liters / Litros</option>
+              <option value="Metro">Meter / Metro</option>
+              <option value="Rolo">Roll / Rolo</option>
+              <option value="Resma">Reams / Resma (500 folhas) </option>
             </select>
-            <span class="err" data-err="i-unidade"></span>
-          </div>
-          <div class="field hidden" id="wrap-qtd-embalagem">
-            <label class="lbl" for="i-qtd-embalagem">Quantity per box/package / Quantidade por caixa/pacote <span
-                class="req">*</span></label>
+  
+          <div class="field hidden" id="wrap-qtd-embalagem" style="flex:1; margin:0;">
+            <label class="lbl" for="i-qtd-embalagem" style="font-size:12px;">
+              Quantity per Packaging / Quantidade por Embalagem <span class="req">*</span></label>
             <input type="number" min="1" step="1" id="i-qtd-embalagem" class="inp"
-              placeholder="Ex.: 500 folhas por caixa" data-testid="input-item-qtd-embalagem" />
+              placeholder="Ex.:20 glues per box / 20 colas por caixa" data-testid="input-item-qtd-embalagem" />
             <span class="err" data-err="i-qtd-embalagem"></span>
           </div>
         </div>
+         <span class="err" data-err="i-unidade"></span>
+         </div>
 
         <div class="section-heading mt-lg">
           <div class="section-bar"></div>
@@ -265,7 +266,7 @@
           </div>
           <div class="field">
             <label class="lbl" for="i-cor">Color / Cor</label>
-            <input type="text" id="i-cor" class="inp" placeholder="Ex.: Branco" data-testid="input-item-cor" />
+            <input type="text" id="i-cor" class="inp" placeholder="Ex.:White / Branco" data-testid="input-item-cor" />
           </div>
           <div class="field">
             <label class="lbl" for="i-tamanho">Size / Tamanho</label>
@@ -275,7 +276,7 @@
           <div class="field grid-span-2">
             <label class="lbl" for="i-especs">Technical specifications / Especificações técnicas</label>
             <textarea id="i-especs" class="inp" rows="3"
-              placeholder="Descreva detalhes técnicos importantes (voltagem, gramatura, capacidade, compatibilidade...)"
+              placeholder="Describe important technical details (voltage, weight, capacity, compatibility...) / Descreva detalhes técnicos importantes (voltagem, gramatura, capacidade, compatibilidade...)"
               data-testid="input-item-especs"></textarea>
           </div>
         </div>
@@ -356,8 +357,8 @@
           <h3>Notes / Observações</h3>
         </div>
         <div class="field">
-          <label class="lbl" for="i-obs">Open field / Campo livre</label>
-          <textarea id="i-obs" class="inp" rows="3" placeholder="Anotações complementares..."
+          <label class="lbl" for="i-obs">OBS</label>
+          <textarea id="i-obs" class="inp" rows="3" placeholder="Additional notes... / Anotações complementares..."
             data-testid="input-item-obs"></textarea>
         </div>
 
@@ -387,7 +388,7 @@
         </div>
         <div class="field hidden" id="wrap-urgencia">
           <label class="lbl" for="i-urgencia">Reason for Urgency / Motivo da urgência <span class="req">*</span></label>
-          <textarea id="i-urgencia" class="inp" rows="2" placeholder="Explique por que este item é urgente"
+          <textarea id="i-urgencia" class="inp" rows="2" placeholder="Explain why this item is urgent. / Explique por que este item é urgente"
             data-testid="input-urgencia"></textarea>
           <span class="err" data-err="i-urgencia"></span>
         </div>
@@ -522,7 +523,7 @@
   <footer class="app-footer">
     <span>© <span id="year"></span> Sistema Institucional de Compras BCB</span>
     <span class="dot-sep">•</span>
-    <span>Versão 1.0</span>
+    <span>Versão 1.2</span>
   </footer>
 
   <script src="./formulario.js"></script>

@@ -134,7 +134,8 @@ $("#btn-next-1").addEventListener("click", () => {
 // ============ ETAPA 2 — Item form ============
 $("#i-unidade").addEventListener("change", (e) => {
   const v = e.target.value;
-  const show = (v === "Caixa" || v === "Pacote");
+  const unidadesComEmbalagem = ["Caixa", "Pacote", "Kg", "Litros", "Metro"]
+  const show = unidadesComEmbalagem.includes(v);
   $("#wrap-qtd-embalagem").classList.toggle("hidden", !show);
 });
 
@@ -192,9 +193,11 @@ $("#btn-add-item").addEventListener("click", () => {
   if (!item.nome) { setError("i-nome", "Informe o nome do material."); ok = false; }
   if (!item.quantidade || Number(item.quantidade) <= 0) { setError("i-qtd", "Informe uma quantidade válida."); ok = false; }
   if (!item.unidade) { setError("i-unidade", "Selecione a unidade."); ok = false; }
-  if ((item.unidade === "Caixa" || item.unidade === "Pacote") && (!item.qtdEmbalagem || Number(item.qtdEmbalagem) <= 0)) {
+ const unidadesComEmbalagem = ["Caixa", "Pacote", "Kg", "Litros", "Metro"];
+  if (unidadesComEmbalagem.includes(item.unidade) && (!item.qtdEmbalagem || Number(item.qtdEmbalagem) <= 0)) {
     setError("i-qtd-embalagem", "Informe a quantidade por caixa/pacote."); ok = false;
   }
+
   if (!item.similar) { setError("similar", "Informe se aceita similar."); ok = false; }
   if (item.link1 && !validUrl(item.link1)) { setError("i-link1", "Informe uma URL válida."); ok = false; }
   if (item.link2 && !validUrl(item.link2)) { setError("i-link2", "Informe uma URL válida."); ok = false; }
