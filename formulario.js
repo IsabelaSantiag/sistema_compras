@@ -99,6 +99,12 @@ $("#departamento").addEventListener("change", (e) => {
   if (!isAcademico) {
     $("#anoOuArea").value = "";
   }
+
+  const isOutro = valor === "Outros";
+  $("#wrap-departamento-outro").classList.toggle("hidden", !isOutro);
+  if (!isOutro) {
+    $("#departamento-outro").value = "";
+  }
 });
 
 
@@ -120,6 +126,9 @@ $("#btn-next-1").addEventListener("click", () => {
   if (!validEmail(dados.email)) { setError("email", "Informe um e-mail válido."); ok = false; }
   if (!dados.campus) { setError("campus", "Selecione o campus."); ok = false; }
   if (!dados.departamento) { setError("departamento", "Selecione o departamento."); ok = false; }
+  if (dados.departamento === "Outros" && !dados.departamentoOutro) {
+    setError("departamento-outro", "Especifique o departamento."); ok = false;
+  }
   if (!dados.finalidade) { setError("finalidade", "Selecione a finalidade."); ok = false; }
   if (dados.finalidade === "Outro" && !dados.finalidadeOutra) {
     setError("finalidade-outra", "Especifique a finalidade."); ok = false;

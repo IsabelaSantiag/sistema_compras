@@ -122,10 +122,18 @@
             <option>Human Resources / Recursos Humanos</option>
             <option>Marketing</option>
             <option>Security / Segurança</option>
+            <option value="Outros">Others / Outros</option>
           </select>
           <span class="err" data-err="departamento"></span>
         </div>
 
+        <div class="field hidden" id="wrap-departamento-outro">
+          <label class="lbl" for="departamento-outro">Specify the department / Especifique o departamento <span class="req">*</span></label>
+          <input type="text" id="departamento-outro" class="inp" data-testid="input-departamento-outro"
+            placeholder="Ex: Legal / Jurídico">
+          <span class="err" data-err="departamento-outro"></span>
+        </div>
+        
         <div class="field hidden" id="campoAcademico">
           <label class="lbl" for="anoOuArea">Year or Subject area / Ano ou Área de ensino <span
               class="req">*</span></label>
