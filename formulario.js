@@ -88,8 +88,8 @@ function goStep(n) {
 
 // ============ ETAPA 1 ============
 $("#finalidade").addEventListener("change", (e) => {
-  const outra = e.target.value === "Outro";
-  $("#wrap-finalidade-outra").classList.toggle("hidden", !outra);
+  const Outro = e.target.value === "Others / Outros";
+  $("#wrap-finalidade-outra").classList.toggle("hidden", !Outro);
 });
 
 $("#departamento").addEventListener("change", (e) => {
@@ -100,7 +100,7 @@ $("#departamento").addEventListener("change", (e) => {
     $("#anoOuArea").value = "";
   }
 
-  const isOutro = valor === "Other / Outros";
+  const isOutro = valor === "Others / Outros";
   $("#wrap-departamento-outro").classList.toggle("hidden", !isOutro);
   if (!isOutro) {
     $("#departamento-outro").value = "";
